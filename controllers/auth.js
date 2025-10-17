@@ -39,7 +39,7 @@ authRouter.post('/register', async (req, res) => {
     email,
     passwordHash,
     role: 'user',
-    verified: false
+    verified: true
   })
 
   //Save User in DB
