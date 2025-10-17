@@ -1,0 +1,25 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 35
+scenarios:
+  - flow:
+      - post:
+          url: "/api/auth/login"
+          json:
+            email: "edghartapia@gmail.com"
+            password: "password"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+      - post:
+          url: "/api/orders"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            tickets: [{ selections: { IT: 76, CA: 15 } }]
+      - get:
+          url: "/orders"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
