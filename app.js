@@ -40,7 +40,7 @@ app.use(helmet())
 
 app.use(
   cors({
-    origin: '*',
+    origin: 'https://worldsuperlotto.com',
     credentials: true
   })
 )
