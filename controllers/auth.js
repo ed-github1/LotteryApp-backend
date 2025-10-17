@@ -50,7 +50,7 @@ authRouter.post('/register', async (req, res) => {
     expiresIn: '1d'
   })
 
-  const verificationLink = `https://worldsuperlotto.netlify.app.com/verify-email?token=${token}`
+  const verificationLink = `https://worldsuperlotto.netlify.app/verify-email?token=${token}`
 
   const emailHTML = `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f4f4f4;">
