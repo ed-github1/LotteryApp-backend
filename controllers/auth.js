@@ -50,7 +50,7 @@ authRouter.post('/register', async (req, res) => {
     expiresIn: '1d'
   })
 
-  const verificationLink = `http://localhost:5173/verify-email?token=${token}`
+  const verificationLink = `https://www.worldsuperlotto.com/verify-email?token=${token}`
 
   const emailHTML = `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f4f4f4;">
