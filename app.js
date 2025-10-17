@@ -41,8 +41,6 @@ app.use(helmet())
 app.use(
   cors({
     origin: [
-      'http://localhost:5173', // Local frontend
-      'https://worldsuperlotto.com',
       'https://worldsuperlotto.netlify.app' // Production frontend
     ],
     origin: 'https://worldsuperlotto.netlify.app',
