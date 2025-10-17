@@ -46,31 +46,20 @@ authRouter.post('/register', async (req, res) => {
   await user.save()
 
   // Create verification email token with user id
-  const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
-    expiresIn: '1d'
-  })
+  // --- EMAIL VERIFICATION LOGIC COMMENTED OUT FOR PRODUCTION ---
+  // const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+  //   expiresIn: '1d'
+  // })
+  // const verificationLink = `https://www.worldsuperlotto.netlify.app/verify-email?token=${token}`
+  // const emailHTML = `...` // Email HTML content
+  // await transporter.sendMail({
+  //   from: EMAIL_USER,
+  //   to: email,
+  //   subject: 'Verifica tu correo',
+  //   html: `${emailHTML}`
+  // })
 
-  const verificationLink = `https://www.worldsuperlotto.com/verify-email?token=${token}`
-
-  const emailHTML = `
-  <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f4f4f4;">
-    <h2 style="color: #333;">Bienvenido a LotteryApp 👋</h2>
-    <p>Gracias por registrarte. Antes de comenzar, necesitamos verificar tu dirección de correo electrónico.</p>
-    <p>Haz clic en el botón de abajo para confirmar tu cuenta:</p>
-    <p style="text-align: center;">
-      <a href="${verificationLink}" style="display: inline-block; padding: 10px 20px; background-color: #28a745; color: #fff; text-decoration: none; border-radius: 5px;">
-        Verificar mi correo
-      </a>
-    </p>
-  </div>
-  `
-
-  await transporter.sendMail({
-    from: EMAIL_USER,
-    to: email,
-    subject: 'Verifica tu correo',
-    html: `${emailHTML}`
-  })
+  // Instead, trigger notification/response directly
 
   res.json({
     message: 'Registro exitoso. Revisa tu correo para verificar tu cuenta.'
