@@ -11,7 +11,7 @@ import superballRouter from './controllers/superball.js'
 import drawSchedulesRouter from './controllers/drawSchedule.js'
 import winnerNumberRouter from './controllers/winnerNumber.js'
 import winnersRouter from './controllers/winners.js'
-import './utils/expireOrders.js'
+// import './utils/expireOrders.js' // Disabled: Expire old tickets cron job
 import './utils/schedule.js'
 import { startTicketExpirationJob } from './utils/expireTickets.js'
 import { PORT } from './utils/config.js'
@@ -40,7 +40,11 @@ app.use(helmet())
 
 app.use(
   cors({
-    origin: 'https://worldsuperlotto.com',
+    origin: [
+      'http://localhost:5173', // Local frontend
+      'https://worldsuperlotto.com',
+      'https://worldsuperlotto.netlify.app' // Production frontend
+    ],
     credentials: true
   })
 )
