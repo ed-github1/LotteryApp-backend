@@ -5,7 +5,9 @@ let io = null
 export function initializeSocket(httpServer) {
   io = new Server(httpServer, {
     cors: { 
-      origin: ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'],
+      origin: ['http://localhost:5173',  
+              'https://worldsuperlotto.netlify.app'
+              ],
       credentials: true
     },
     maxHttpBufferSize: 1e6
