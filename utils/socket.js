@@ -6,7 +6,8 @@ export function initializeSocket(httpServer) {
   io = new Server(httpServer, {
     cors: { 
       origin: ['http://localhost:5173',  
-              'https://worldsuperlotto.netlify.app'
+              'https://worldsuperlotto.netlify.app',
+               'https://worldsuperlotto.com',
               ],
       credentials: true
     },
