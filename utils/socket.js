@@ -4,11 +4,11 @@ let io = null
 
 export function initializeSocket(httpServer) {
   io = new Server(httpServer, {
-    cors: { 
+    cors: {
       origin: [
         'http://localhost:5173',
-        'http://localhost:5174',
-        'https://worldsuperlotto.netlify.app'
+        'https://worldsuperlotto.netlify.app',
+        'https://worldsuperlotto.com'
       ],
       credentials: true
     },
@@ -28,7 +28,7 @@ export function initializeSocket(httpServer) {
 
     socket.on('disconnect', () => {
       console.log('User disconnected:', socket.id)
-    })                                                           
+    })
   })
 
   return io
