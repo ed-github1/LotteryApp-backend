@@ -32,14 +32,14 @@ authRouter.post('/register', async (req, res) => {
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(password, saltRounds)
 
-  // Save user as pending (not verified)
+  // Save user as verified (since email verification is skipped)
   const user = new User({
     firstName,
     lastName,
     email,
     passwordHash,
     role: 'user',
-    verified: false
+    verified: true
   })
 
   //Save User in DB

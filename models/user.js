@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
   usdt: {
     type: Number,
     default: 0
+  },
+  credits: {
+    type: Number,
+    default: 0
   }
 })
 

@@ -121,6 +121,7 @@ lotteryRouter.get(
       if (startDate && isNaN(new Date(startDate))) startDate = undefined
       if (endDate && isNaN(new Date(endDate))) endDate = undefined
 
+      // Get orders and populate user email
       const { orders, totalCount } = await getOrdersByStatus({
         status: 'paid',
         page: numericPage,
@@ -128,8 +129,10 @@ lotteryRouter.get(
         startDate,
         endDate
       })
+      // Populate user email for each order
+      const populatedOrders = await Order.populate(orders, { path: 'user', select: 'email' })
       const totalPages = totalCount ? Math.ceil(totalCount / numericLimit) : 1
-      res.json({ orders, totalPages, totalCount })
+      res.json({ orders: populatedOrders, totalPages, totalCount })
     } catch (error) {
       logger.error('Error fetching paid orders:', error)
       res.status(500).json({ message: 'Error fetching paid orders' })
